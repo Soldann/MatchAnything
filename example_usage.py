@@ -1,4 +1,4 @@
-from third_party.ROMA.roma.matchanything_roma_model import MatchAnything_Model
+from match_anything.third_party.ROMA.roma.matchanything_roma_model import MatchAnything_Model
 
 from PIL import Image
 
@@ -8,12 +8,12 @@ from pathlib import Path
 import torch
 import matplotlib.pyplot as plt
 import cv2
-from src.config.default import _CN as cfg
+from match_anything.config.default import _CN as cfg
 import kornia as K
 import kornia.feature as KF
 from kornia_moons.viz import draw_LAF_matches
 
-from src.config.default import get_cfg_defaults
+from match_anything.config.default import get_cfg_defaults
 config = get_cfg_defaults()
 config.merge_from_file("configs/models/roma_model.py")
 

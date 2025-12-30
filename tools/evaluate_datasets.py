@@ -16,14 +16,14 @@ from pathlib import Path
 import sys
 sys.path.append(str(Path(__file__).parent.parent.resolve()))
 
-from src.lightning.lightning_loftr import PL_LoFTR
-from src.config.default import get_cfg_defaults
-from src.utils.dataset import dict_to_cuda
-from src.utils.metrics import estimate_homo, estimate_pose, relative_pose_error
-from src.utils.homography_utils import warp_points
+from match_anything.lightning.lightning_loftr import PL_LoFTR
+from match_anything.config.default import get_cfg_defaults
+from match_anything.utils.dataset import dict_to_cuda
+from match_anything.utils.metrics import estimate_homo, estimate_pose, relative_pose_error
+from match_anything.utils.homography_utils import warp_points
 
-from src.datasets.common_data_pair import CommonDataset
-from src.utils.metrics import error_auc
+from match_anything.datasets.common_data_pair import CommonDataset
+from match_anything.utils.metrics import error_auc
 from tools_utils.plot import plot_matches, warp_img_and_blend, epipolar_error
 from tools_utils.data_io import save_h5
 
