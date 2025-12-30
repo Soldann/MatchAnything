@@ -1,4 +1,16 @@
 # MatchAnything: Universal Cross-Modality Image Matching with Large-Scale Pre-Training
+
+This fork based on the HuggingFace demo implementation of MatchAnything repackages the repo into a pyproject package importable as `match_anthing`.
+
+See `example_usage.py` to see how to import and use the model in your project.
+
+Usage:
+```
+pip install -e .
+```
+
+Original README below:
+
 ### [Project Page](https://zju3dv.github.io/MatchAnything) | [Paper](??)
 
 > MatchAnything: Universal Cross-Modality Image Matching with Large-Scale Pre-Training\
