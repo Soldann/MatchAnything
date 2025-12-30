@@ -1,0 +1,11 @@
+[project]
+name = "match_anything"
+description = "Universal Cross-Modality Image Matching with Large-Scale Pre-Training"
+version = "1.0.0"
+# dynamic = ["dependencies"]
+
+# [tool.setuptools.dynamic]
+# dependencies = {file = ["requirements.txt"]} # Doesn't work for some reason due to the pip flag
+
+[tool.setuptools.packages.find]
+include = ["match_anything*"]
