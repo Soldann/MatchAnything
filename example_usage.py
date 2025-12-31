@@ -12,30 +12,16 @@ from match_anything.config.default import _CN as cfg
 import kornia as K
 import kornia.feature as KF
 from kornia_moons.viz import draw_LAF_matches
+from match_anything.utils.model_utils import load_config
 
-from match_anything.config.default import get_cfg_defaults
-config = get_cfg_defaults()
-config.merge_from_file("configs/models/roma_model.py")
-
-config.METHOD = "ROMA"
-
-def lower_config(yacs_cfg):
-    from yacs.config import CfgNode as CN
-    if not isinstance(yacs_cfg, CN):
-        return yacs_cfg
-    return {k.lower(): lower_config(v) for k, v in yacs_cfg.items()}
-
-
-config = lower_config(config)
-print(config['roma'])
-
+config = load_config("matchanything_roma")
 img1_path = Path("/home/landson/RGBT-Scenes/Building/rgb/test/img_001.jpg")
 img2_path = Path("/home/landson/RGBT-Scenes/Building/rgb/test/img_009.jpg")
 img1 = K.io.load_image(img1_path, K.io.ImageLoadType.RGB32)[None, ...]
 img2 = K.io.load_image(img2_path, K.io.ImageLoadType.RGB32)[None, ...]
 print(f"Loaded images: {img1.shape}, {img2.shape}")
 
-matcher = MatchAnything_Model(config['roma'], True)
+matcher = MatchAnything_Model(config, True)
 #load weights
 ckpt = torch.load("weights/matchanything_roma.ckpt", map_location='cpu')
 matcher.load_state_dict(ckpt['state_dict'])
