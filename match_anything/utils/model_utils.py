@@ -1,4 +1,5 @@
 from yacs.config import CfgNode as CN
+from pathlib import Path
 from match_anything.config.default import get_cfg_defaults
 
 def load_config(method):
@@ -13,10 +14,11 @@ def load_config(method):
         return {k.lower(): lower_config(v) for k, v in yacs_cfg.items()}
 
     config = get_cfg_defaults()
+    model_dir = Path(__file__).parent.parent.parent / 'configs' / 'models'
     if method == 'matchanything_eloftr':
-        config.merge_from_file("configs/models/eloftr_model.py")
+        config.merge_from_file(model_dir / "eloftr_model.py")
     elif method == 'matchanything_roma':
-        config.merge_from_file("configs/models/roma_model.py")
+        config.merge_from_file(model_dir / "roma_model.py")
     else:
         raise ValueError(f"Method {method} not recognized. Supported methods are: ROMA, ELoFTR")
 
